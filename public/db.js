@@ -5,12 +5,12 @@ let budgetVersion;
 const request = indexedDB.open('BudgetDB', budgetVersion || 21);
 
 request.onupgradeneeded = function (e) {
-  console.log('Upgrade needed in IndexDB');
+  console.log('Upgrade the IndexDB');
 
   const { oldVersion } = e;
   const newVersion = e.newVersion || db.version;
 
-  console.log(`DB Updated from version ${oldVersion} to ${newVersion}`);
+  console.log(`Database Updated from version ${oldVersion} to ${newVersion}`);
 
   db = e.target.result;
 
@@ -20,11 +20,11 @@ request.onupgradeneeded = function (e) {
 };
 
 request.onerror = function (e) {
-  console.log(`Woops! ${e.target.errorCode}`);
+  console.log(`Whoops! ${e.target.errorCode}`);
 };
 
 function checkDatabase() {
-  console.log('check db invoked');
+  console.log('check invoked database');
 
   // Open a transaction on your BudgetStore db
   let transaction = db.transaction(['BudgetStore'], 'readwrite');
@@ -37,7 +37,7 @@ function checkDatabase() {
 
   // If the request was successful
   getAll.onsuccess = function () {
-    // If there are items in the store, we need to bulk add them when we are back online
+    // If there are items in the store, they need to be bulk added when we are back online
     if (getAll.result.length > 0) {
       fetch('/api/transaction/bulk', {
         method: 'POST',
@@ -67,7 +67,7 @@ function checkDatabase() {
 }
 
 request.onsuccess = function (e) {
-  console.log('success');
+  console.log('Done');
   db = e.target.result;
 
   // Check if app is online before reading from db
@@ -78,7 +78,7 @@ request.onsuccess = function (e) {
 };
 
 const saveRecord = (record) => {
-  console.log('Save record invoked');
+  console.log('Save invoked record');
   // Create a transaction on the BudgetStore db with readwrite access
   const transaction = db.transaction(['BudgetStore'], 'readwrite');
 
