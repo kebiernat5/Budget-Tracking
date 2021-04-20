@@ -1,11 +1,11 @@
 body {
   font-size: 120%;
-  font-family: Arial;
+  font-family: 'Quicksand', sans-serif;
 }
 
 button, input {
   font-size: 100%;
-  font-family: Arial;
+  font-family: 'Quicksand', sans-serif;
 }
 
 table {
@@ -19,7 +19,7 @@ td, th {
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #489970;
 }
 
 .error {
